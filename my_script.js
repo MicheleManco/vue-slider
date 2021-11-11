@@ -30,6 +30,10 @@ var miovue = new Vue({
             }
         ],
     },
+    created: function (){
+            this.autoSlide()  
+    },
+
     methods: {
             nextSlide: function(){
                 if(this.countSlides === this.slides.length -1){
@@ -44,10 +48,18 @@ var miovue = new Vue({
                 }   else {
                     this.countSlides--
                 }
-            }   
-
-        }   
+            },
+            autoSlide(){
+                setInterval(() => {
+                    if(this.countSlides === this.slides.length -1){
+                        this.countSlides = 0;
+                    }   else {
+                        this.countSlides++
+                    }
+                }, 1000);
+            },
     
+        }     
 });
 
 
